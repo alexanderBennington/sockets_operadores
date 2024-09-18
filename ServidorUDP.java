@@ -33,11 +33,11 @@ public class ServidorUDP {
                         if (num2 != 0) {
                             resultado = num1 / num2;
                         } else {
-                            resultado = Double.NaN; // Division por cero
+                            resultado = Double.NaN; // División por cero
                         }
                         break;
                     default:
-                        System.out.println("Operador no valido");
+                        System.out.println("Operador no válido");
                         continue;
                 }
 
@@ -45,7 +45,8 @@ public class ServidorUDP {
                 byte[] bufferRespuesta = respuesta.getBytes();
                 InetAddress address = packet.getAddress();
                 int port = packet.getPort();
-                DatagramPacket packetRespuesta = new DatagramPacket(bufferRespuesta, bufferRespuesta.length, address, port);
+                DatagramPacket packetRespuesta = new DatagramPacket(bufferRespuesta, bufferRespuesta.length, address,
+                        port);
                 socket.send(packetRespuesta);
             }
         } catch (Exception e) {

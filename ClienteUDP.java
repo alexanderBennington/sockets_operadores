@@ -1,6 +1,7 @@
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.Scanner;
 
 public class ClienteUDP {
     public static void main(String[] args) {
@@ -8,7 +9,18 @@ public class ClienteUDP {
         int puerto = 12345;
 
         try (DatagramSocket socket = new DatagramSocket()) {
-            String mensaje = "10.5 2.5 +";
+            Scanner scanner = new Scanner(System.in);
+
+            // Pedir los números y el operador al usuario
+            System.out.print("Introduce el primer número: ");
+            double num1 = scanner.nextDouble();
+            System.out.print("Introduce el segundo número: ");
+            double num2 = scanner.nextDouble();
+            System.out.print("Introduce el operador (+, -, *, /): ");
+            char operador = scanner.next().charAt(0);
+
+            // Crear el mensaje a enviar
+            String mensaje = num1 + " " + num2 + " " + operador;
             byte[] buffer = mensaje.getBytes();
             InetAddress address = InetAddress.getByName(host);
 
